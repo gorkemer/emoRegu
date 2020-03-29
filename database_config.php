@@ -3,6 +3,6 @@
   $port = 3306;
   $username = "root";
   $password = "nyhe86bp";
-  $dbname = "emotionReguDatabase";
+  $dbname = "emoReguDatabase";
   $table = "experimentData";
 ?>

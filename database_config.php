@@ -1,8 +1,8 @@
 <?php
-  $servername = "gorkemer.com";
+  $servername = "localhost";
   $port = 3306;
   $username = "root";
-  $password = "gonulsimseker";
+  $password = "nyhe86bp";
   $dbname = "emoReguDatabase";
   $table = "experimentData";
 ?>

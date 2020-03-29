@@ -41,6 +41,18 @@ try {
     $insertstmt->execute();
   }
   echo '{"success": true}';
+
+// Send error message to the server log if error connecting to the database
+if (!mysqli_connect("localhost","bad_user","bad_password","my_db")) {
+    error_log("Failed to connect to database!", 0);
+}
+
+// Send email to administrator if we run out of FOO
+if (!($foo = allocate_new_foo())) {
+    error_log("Oh no! We are out of FOOs!", 1, "admin@example.com");
+}
+
+  
 } catch(PDOException $e) {
   echo '{"success": false, "message": ' . $e->getMessage();
 }

@@ -186,7 +186,7 @@ function saveData() {
 
     //distribution of cues based on the subject condition. This way each participant will see the same image
     // associated with different cues. 
-    for (var i=0; i<imageList4.length; i++) {
+    for (var i=0; i<imageList4.length/3; i++) {
 
       if (subCond == 1){ //first condition: lookNegative
 
@@ -296,6 +296,7 @@ function saveData() {
       on_finish: function() {
         saveData();
         jsPsych.getDisplayElement().innerHTML = "<center><h1>This is the end of the experiment.</h1></center>";
+
 
       }
 

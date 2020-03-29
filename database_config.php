@@ -2,7 +2,7 @@
   $servername = "gorkemer.com";
   $port = 3306;
   $username = "root";
-  $password = "nyhe86bp";
+  $password = "gonulsimseker";
   $dbname = "emoReguDatabase";
   $table = "experimentData";
 ?>

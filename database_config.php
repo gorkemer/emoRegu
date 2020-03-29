@@ -1,8 +1,8 @@
 <?php
-  $servername = "gorkemercom";
+  $servername = "gorkemer.com";
   $port = 3306;
-  $username = "carljung";
-  $password = "anima";
+  $username = "root";
+  $password = "nyhe86bp";
   $dbname = "emotionRegu";
   $table = "rt";
 ?>

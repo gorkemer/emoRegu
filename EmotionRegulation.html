@@ -236,9 +236,9 @@ function saveData() {
         //tag data variable here
       } 
 
-      testStimuli.push(trial_obj1);
-      testStimuli.push(trial_obj2);
-      testStimuli.push(trial_obj3);
+      //testStimuli.push(trial_obj1);
+      //testStimuli.push(trial_obj2);
+      //testStimuli.push(trial_obj3);
       testStimuli.push(trial_obj4);
       // randomizing the test stimuli
       //jsPsych.randomization.shuffle(testStimuli);
@@ -275,7 +275,7 @@ function saveData() {
     var responseTrial = {
         type: 'survey-likert-timeLocked',
         questions: [{prompt: "How negative do you feel?", labels: scale_1}],
-        trial_duration: 2500
+        trial_duration: 500
     };
 
     var test_procedure = {

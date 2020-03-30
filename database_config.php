@@ -1,8 +1,8 @@
 <?php
-  $servername = "localhost";
+  $servername = "197.198.77.203";
   $port = 3306;
-  $username = "root";
-  $password = "nyhe86bp";
+  $username = "infecteduser";
+  $password = "karabiber10"; //if it asks mysql user root, if not: nyhe86bp
   $dbname = "emoReguDatabase";
   $table = "experimentData";
 ?>

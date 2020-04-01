@@ -24,18 +24,11 @@
 <script>
 
 //saving data
-function saveData() {
+function saveData(name, data){
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'php/save_data.php'); // change 'write_data.php' to point to php script.
+  xhr.open('POST', 'write_data.php'); // 'write_data.php' is the path to the php file described above.
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.onload = function() {
-    if(xhr.status == 200){
-      console.log("checkio");
-      var response = JSON.parse(JSON.stringify(xhr.responseText));
-      console.log(response.success);
-    }
-  };
-  xhr.send(jsPsych.data.get().json());
+  xhr.send(JSON.stringify({filename: name, filedata: data}));
 }
 
 
@@ -292,17 +285,13 @@ function saveData() {
 
 
     
-    jsPsych.init({
-      timeline: timeline,
-      on_finish: function() {
-        saveData();
-        jsPsych.getDisplayElement().innerHTML = "<center><h1>This is the end of the experiment.</h1></center>";
+// call the saveData function after the experiment is over
+jsPsych.init({
+  timeline: timeline,
+   // code to define the experiment structure would go here...
+   on_finish: function(){ saveData("experiment_data", jsPsych.data.get().csv()); }
+});
 
-
-      }
-
-      
-    });
 
 </script>
 </html>

@@ -38,12 +38,7 @@
 
   
   ///variables for drawing arrows
-    var downArrow = {
-      stimulus: "<p> <span style='font-size:200px;color: transparent;  text-shadow: 0 0 0 green; '>&#8681</span>",
-      data: {
-        stimulus_type: "downArrow"
-        }
-      }
+    var downArrow = "<p> <span style='font-size:200px;color: transparent;  text-shadow: 0 0 0 green; '>&#8681</span>"
     var lookNegative = "<span style='float: middle; font-size: 200px'>&#127909</span> " 
     var lookNeutral = "<span style='float: middle; font-size: 200px'>&#127909</span> " 
     var upArrow = "<span style='font-size:200px; color: transparent;  text-shadow: 0 0 0 red;'>&#8679</span></p>"
@@ -64,11 +59,16 @@
 
     var survey_trial = {
       type: 'survey-text',
-      questions: [{prompt: "any prompt"}],
+      questions: [{prompt: "Your Name?"}],
       on_finish: function(data){
       randomGroup = JSON.parse(data.responses).Q0; // update the global variable
-      console.log('The trial just finished loading.', randomGroup)}
-    };
+      console.log('The trial just finished loading.', randomGroup);
+      }
+      // data: {
+      // written: randomGroup
+      // }
+    }
+
     
     timeline.push(survey_trial);
 
@@ -229,13 +229,13 @@
       } 
 
       else if (subCond == 4){ //third condition: lookNeutral
-        var trial_obj1 = {stimulus: imageList1[i], cue: lookNeutral, cue_type: "lookNeutral"};
+        var trial_obj1 = {stimulus: imageList1[i], cue: lookNeutral};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: lookNegative, cue_type: "lookNegative"};
+        var trial_obj2 = {stimulus: imageList2[i], cue: lookNegative};
         //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: upArrow, cue_type: "upArrow"};
+        var trial_obj3 = {stimulus: imageList3[i], cue: upArrow};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: downArrow, cue_type: "downArrow"};
+        var trial_obj4 = {stimulus: imageList4[i], cue: downArrow};
         //tag data variable here
       } 
 
@@ -267,8 +267,8 @@
         stimulus: jsPsych.timelineVariable('cue'),
         trial_duration: 500,
         data: {
-          cue_type: jsPsych.timelineVariable('cue_type')
-        }
+        stimulus_type: "cue"
+      }
     };
 
 
@@ -277,6 +277,9 @@
       stimulus: jsPsych.timelineVariable('stimulus'),
       choices: jsPsych.NO_KEYS,
       trial_duration: 500,
+      data: {
+        stimulus_type: "image"
+      }
     }
     
     var scale_1 = ["1", "2", "3", "4", "5", "6", "7"];
@@ -284,7 +287,10 @@
     var responseTrial = {
         type: 'survey-likert-timeLocked',
         questions: [{prompt: "How negative do you feel?", labels: scale_1}],
-        trial_duration: 1000
+        trial_duration: 1000,
+        data: {
+        stimulus_type: "response"
+      }
     };
 
     var test_procedure = {

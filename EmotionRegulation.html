@@ -229,13 +229,21 @@
       } 
 
       else if (subCond == 4){ //third condition: lookNeutral
-        var trial_obj1 = {stimulus: imageList1[i], cue: lookNeutral};
+        var trial_obj1 = {stimulus: imageList1[i], cue: lookNeutral, data: {
+        cue_type: "lookNeutral"
+      }};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: lookNegative};
+        var trial_obj2 = {stimulus: imageList2[i], cue: lookNegative, data: {
+        cue_type: "lookNegative"
+      }};
         //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: upArrow};
+        var trial_obj3 = {stimulus: imageList3[i], cue: upArrow, data: {
+        cue_type: "upArrow"
+      }};
         //tag data variable here
-        var trial_obj3 = {stimulus: imageList4[i], cue: downArrow};
+        var trial_obj3 = {stimulus: imageList4[i], cue: downArrow, data: {
+        cue_type: "downArrow"
+      }};
         //tag data variable here
       } 
 

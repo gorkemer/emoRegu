@@ -188,7 +188,7 @@
     // associated with different cues. 
     for (var i=0; i<imageList4.length/3; i++) {
 
-      if (subCond == 1){ //first condition: lookNegative
+      if (subCond == 1){ //first condition: cuetype: increase
 
         var trial_obj1 = {stimulus: imageList1[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
         //tag data variable here
@@ -200,7 +200,7 @@
         //tag data variable here
       } 
 
-      else if (subCond == 2){ //second condition: upArrow
+      else if (subCond == 2){ //second condition: cueType: look
         var trial_obj1 = {stimulus: imageList1[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};
         //tag data variable here
         var trial_obj2 = {stimulus: imageList2[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
@@ -211,7 +211,7 @@
         //tag data variable here
       } 
 
-      else if (subCond == 3){ //third condition: downArrow
+      else if (subCond == 3){ //third condition: cueType: decrease
         var trial_obj1 = {stimulus: imageList1[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
         //tag data variable here
         var trial_obj2 = {stimulus: imageList2[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};

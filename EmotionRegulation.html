@@ -39,8 +39,7 @@
   
   ///variables for drawing arrows
     var downArrow = "<p> <span style='font-size:200px;color: transparent;  text-shadow: 0 0 0 green; '>&#8681</span>"
-    var lookNegative = "<span style='float: middle; font-size: 200px'>&#127909</span> " 
-    var lookNeutral = "<span style='float: middle; font-size: 200px'>&#127909</span> " 
+    var look = "<span style='float: middle; font-size: 200px'>&#127909</span> " 
     var upArrow = "<span style='font-size:200px; color: transparent;  text-shadow: 0 0 0 red;'>&#8679</span></p>"
 
 
@@ -191,51 +190,38 @@
 
       if (subCond == 1){ //first condition: lookNegative
 
-
-        var trial_obj1 = {stimulus: imageList1[i], cue: lookNegative, imageType:"aversiveImage" ,cueType: "lookNeutral"};
-        //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
-        //tag data vaiable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
-        //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: lookNeutral, imageType:"neutralImage" ,cueType: "lookNeutral"};
-        //tag data variable here
-
-      
-      } 
-
-      else if (subCond == 2){ //second condition: upArrow
         var trial_obj1 = {stimulus: imageList1[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
         //tag data variable here
         var trial_obj2 = {stimulus: imageList2[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
+        //tag data vaiable here
+        var trial_obj3 = {stimulus: imageList3[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};
         //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: lookNeutral, imageType:"aversiveImage" ,cueType: "lookNeutral"};
+        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "look-neutral"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: lookNegative, imageType:"neutralImage" ,cueType: "lookNeutral";
+      } 
+
+      else if (subCond == 2){ //second condition: upArrow
+        var trial_obj1 = {stimulus: imageList1[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};
+        //tag data variable here
+        var trial_obj2 = {stimulus: imageList2[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
+        //tag data variable here
+        var trial_obj3 = {stimulus: imageList3[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
+        //tag data variable here
+        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "look-neutral"};
         //tag data variable here
       } 
 
       else if (subCond == 3){ //third condition: downArrow
         var trial_obj1 = {stimulus: imageList1[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: lookNeutral, imageType:"aversiveImage" ,cueType: "lookNeutral"};
-        //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: lookNegative, imageType:"aversiveImage" ,cueType: "lookNeutral"};
-        //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: upArrow, imageType:"neutralImage" ,cueType: "increase"};
-        //tag data variable here
-      } 
-
-      else if (subCond == 4){ //third condition: lookNeutral
-        var trial_obj1 = {stimulus: imageList1[i], cue: lookNeutral, imageType:"aversiveImage" ,cueType: "lookNeutral"};
-        //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: lookNegative, imageType:"aversiveImage" ,cueType: "lookNeutral"};
+        var trial_obj2 = {stimulus: imageList2[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};
         //tag data variable here
         var trial_obj3 = {stimulus: imageList3[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: downArrow, imageType:"neutralImage" ,cueType: "decrease"};
+        var trial_obj4 = {stimulus: imageList4[i], cue: upArrow, imageType:"neutralImage" ,cueType: "lookNeutral"};
         //tag data variable here
       } 
+
 
       //testStimuli.push(trial_obj1);
       //testStimuli.push(trial_obj2);

@@ -192,48 +192,48 @@
       if (subCond == 1){ //first condition: lookNegative
 
 
-        var trial_obj1 = {stimulus: imageList1[i], cue: lookNegative};
+        var trial_obj1 = {stimulus: imageList1[i], cue: lookNegative, imageType:"aversiveImage" ,cueType: "lookNeutral"};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: upArrow};
+        var trial_obj2 = {stimulus: imageList2[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
         //tag data vaiable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: downArrow};
+        var trial_obj3 = {stimulus: imageList3[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: lookNeutral};
+        var trial_obj4 = {stimulus: imageList4[i], cue: lookNeutral, imageType:"neutralImage" ,cueType: "lookNeutral"};
         //tag data variable here
 
       
       } 
 
       else if (subCond == 2){ //second condition: upArrow
-        var trial_obj1 = {stimulus: imageList1[i], cue: upArrow};
+        var trial_obj1 = {stimulus: imageList1[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: downArrow};
+        var trial_obj2 = {stimulus: imageList2[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
         //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: lookNeutral};
+        var trial_obj3 = {stimulus: imageList3[i], cue: lookNeutral, imageType:"aversiveImage" ,cueType: "lookNeutral"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: lookNegative};
+        var trial_obj4 = {stimulus: imageList4[i], cue: lookNegative, imageType:"neutralImage" ,cueType: "lookNeutral";
         //tag data variable here
       } 
 
       else if (subCond == 3){ //third condition: downArrow
-        var trial_obj1 = {stimulus: imageList1[i], cue: downArrow};
+        var trial_obj1 = {stimulus: imageList1[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: lookNeutral};
+        var trial_obj2 = {stimulus: imageList2[i], cue: lookNeutral, imageType:"aversiveImage" ,cueType: "lookNeutral"};
         //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: lookNegative};
+        var trial_obj3 = {stimulus: imageList3[i], cue: lookNegative, imageType:"aversiveImage" ,cueType: "lookNeutral"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: upArrow};
+        var trial_obj4 = {stimulus: imageList4[i], cue: upArrow, imageType:"neutralImage" ,cueType: "increase"};
         //tag data variable here
       } 
 
       else if (subCond == 4){ //third condition: lookNeutral
-        var trial_obj1 = {stimulus: imageList1[i], cue: lookNeutral};
+        var trial_obj1 = {stimulus: imageList1[i], cue: lookNeutral, imageType:"aversiveImage" ,cueType: "lookNeutral"};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: lookNegative};
+        var trial_obj2 = {stimulus: imageList2[i], cue: lookNegative, imageType:"aversiveImage" ,cueType: "lookNeutral"};
         //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: upArrow};
+        var trial_obj3 = {stimulus: imageList3[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: downArrow};
+        var trial_obj4 = {stimulus: imageList4[i], cue: downArrow, imageType:"neutralImage" ,cueType: "decrease"};
         //tag data variable here
       } 
 
@@ -276,7 +276,9 @@
       choices: jsPsych.NO_KEYS,
       trial_duration: 500,
       data: {
-        stimulus_type: "image"
+        stimulus_type: "image",
+        cue_type: jsPsych.timelineVariable('cueType'),
+        image_type: jsPsych.timelineVariable('imageType')
       }
     }
     

@@ -10,7 +10,7 @@
 <script src="../jspsych-6.0.5/plugins/jspsych-html-slider-response.js"></script>
 <script src="../jspsych-6.0.5/plugins/jspsych-survey-likert.js"></script>
 <script src="custom-plugins/jspsych-survey-likert-timeLocked.js"></script>
-<script src="jspsych-6.0.5/plugins/jspsych-survey-text.js"></script>
+<script src="../jspsych-6.0.5/plugins/jspsych-survey-text.js"></script>
 
 <link href="../jspsych-6.0.5/css/jspsych.css" rel="stylesheet" type="text/css"></link>
 
@@ -58,7 +58,7 @@
 
     var survey_trial = {
       type: 'survey-text',
-      questions: [{prompt: "Your Name?"}],
+      questions: [{prompt: "Participant ID"}],
       on_finish: function(data){
       randomGroup = JSON.parse(data.responses).Q0; // update the global variable
       console.log('The trial just finished loading.', randomGroup);

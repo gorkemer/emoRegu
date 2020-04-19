@@ -46,10 +46,24 @@
     /* create timeline */
     var timeline = [];
     
+    timeline.push({
+      type: 'fullscreen',
+      fullscreen_mode: true
+    });
+
+
     /* define welcome message trial */
     var welcome = {
       type: "html-keyboard-response",
-      stimulus: "Welcome to the experiment. Press any key to begin." 
+      stimulus: "<p>Welcome to the experiment. You will be presenting with highly arousing and aversive pictures.</p>" +
+      "<p> Each trial start with an instruction screen showing a symbol, like the examples below. </p>" +
+       "<p> Add images with img src tag.</p>" +
+      "<p> In the 'up arrow' condition, you are asked to engage yourself with the depicted situation (e.g. imagining a close friend/family member in the situation depicted in the picture)</p>" +
+      "<p> Conversely, in the 'down arrow' condition, you are asked to reduce the intensity of the negative emotion by distancing yourself from the image like a detached observer (e.g. thinking the depicted situation is not real)</p>" +
+      "<p> In the 'look condition', you are asked to simply attend and allow yourself to experience/feel any emotional responses. the intensity of the negative emotion by distancing yourself from the image like a detached observer (e.g. thinking the depicted situation is not real)</p>" +
+      "<p> Subsequent to the image you will be asked to rate your current emotional state from 1 - 7 (less negative to very negative).</p>" +
+      "<p>Press any key to begin.</p>",
+      post_trial_gap: 1000
     };
     timeline.push(welcome);
 
@@ -223,9 +237,9 @@
       } 
 
 
-      //testStimuli.push(trial_obj1);
-      //testStimuli.push(trial_obj2);
-      //testStimuli.push(trial_obj3);
+      testStimuli.push(trial_obj1);
+      testStimuli.push(trial_obj2);
+      testStimuli.push(trial_obj3);
       testStimuli.push(trial_obj4);
       // randomizing the test stimuli
       //jsPsych.randomization.shuffle(testStimuli);
@@ -290,7 +304,11 @@
     
     timeline.push(test_procedure);
 
-
+    // exit fullscreen mode
+    timeline.push({
+      type: 'fullscreen',
+      fullscreen_mode: false
+    });
     
 // call the saveData function after the experiment is over
 jsPsych.init({

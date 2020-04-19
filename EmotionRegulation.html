@@ -63,7 +63,7 @@
       "<p style='display:inline-block;min-width:65.5%;'> In the <b><font color='red'>up arrow</font></b> condition, you are asked to engage yourself with the depicted situation (e.g. imagining a close friend/family member in the situation depicted in the picture). </p>"+ 
       "<p style='display:inline-block;min-width:90.5%;'>  Conversely, in the <b><font color='green'>down arrow</font></b>, condition, you are asked to reduce the intensity of the negative emotion by distancing yourself from the image like a detached observer (e.g. thinking the depicted situation is not real).<p>" +
       "<pstyle='display:inline-block;min-width:37.5%';> In the <b><font color='dimgray'>camera</font></b> condition, you are asked to simply attend and allow yourself to experience/feel any emotional responses.</p>" +
-      "<br> <p> &#8711 Subsequent to the images you will be asked to rate your current emotional state with a 7 point (1-7) likert scale (less negative to very negative).</p>" +
+      "<br> <p>Subsequent to the images you will be asked to rate your current emotional state with a 7 point (1-7) Likert scale (less negative to very negative).</p>" +
       "<br> <p>Press any key to begin.</li> </ul>"+
       "</div>",
       post_trial_gap: 1000
@@ -87,11 +87,11 @@
     timeline.push(survey_trial);
 
     // getting the subject condition variable from the url sent out the subjects
-    var subCond = jsPsych.data.getURLVariable('sub_cond');
+    var subGroup = jsPsych.data.getURLVariable('subGroup')
 
-    if (typeof subCond === "undefined") {
+    if (typeof subGroup === "undefined") {
     alert("subject condition is undefined, assigning arbitrarily");
-    var subCond = 1;
+    var subGroup = 1;
     }
 
 
@@ -159,8 +159,8 @@
       "testImageSet/9040.jpg",
       "testImageSet/3069.jpg",
       "testImageSet/6563.jpg",
-
       "testImageSet/3110.jpg",
+
       "testImageSet/3301.jpg",
       "testImageSet/3059.jpg",
       "testImageSet/2095.jpg",
@@ -184,8 +184,8 @@
       "testImageSet/2220.jpg",
       "testImageSet/1321.jpg",
       "testImageSet/5920.jpg",
-
       "testImageSet/6900.jpg",
+
       "testImageSet/1302.jpg",
       "testImageSet/9422.jpg",
       "testImageSet/2780.jpg",
@@ -203,39 +203,39 @@
 
     //distribution of cues based on the subject condition. This way each participant will see the same image
     // associated with different cues. 
-    for (var i=0; i<imageList4.length/3; i++) {
+    // for (var i=0; i<imageList4.length; i++) {
+    for (var i=0; i<imageList4.length; i++) {
 
-      if (subCond == 1){ //first condition: cuetype: increase
+      if (subGroup == 1){ //first condition: cuetype: increase
 
-        var trial_obj1 = {stimulus: imageList1[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
+        var trial_obj1 = {stimulus: imageList1[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase", subGroup: "1"};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
+        var trial_obj2 = {stimulus: imageList2[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease", subGroup: "1"};
         //tag data vaiable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};
+        var trial_obj3 = {stimulus: imageList3[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative", subGroup: "1"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "look-neutral"};
+        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "look-neutral", subGroup: "1"};
+      } 
+
+      else if (subGroup == 2){ //second condition: cueType: look
+        var trial_obj1 = {stimulus: imageList1[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative", subGroup: "2"};
+        //tag data variable here
+        var trial_obj2 = {stimulus: imageList2[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase",subGroup: "2"};
+        //tag data variable here
+        var trial_obj3 = {stimulus: imageList3[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease", subGroup: "2"};
+        //tag data variable here
+        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "look-neutral", subGroup: "2"};
         //tag data variable here
       } 
 
-      else if (subCond == 2){ //second condition: cueType: look
-        var trial_obj1 = {stimulus: imageList1[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};
+      else if (subGroup == 3){ //third condition: cueType: decrease
+        var trial_obj1 = {stimulus: imageList1[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease", subGroup: "3"};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
+        var trial_obj2 = {stimulus: imageList2[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative", subGroup: "3"};
         //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
+        var trial_obj3 = {stimulus: imageList3[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase", subGroup: "3"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "look-neutral"};
-        //tag data variable here
-      } 
-
-      else if (subCond == 3){ //third condition: cueType: decrease
-        var trial_obj1 = {stimulus: imageList1[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
-        //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};
-        //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
-        //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: upArrow, imageType:"neutralImage" ,cueType: "lookNeutral"};
+        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "lookNeutral", subGroup: "3"};
         //tag data variable here
       } 
 
@@ -245,7 +245,7 @@
       testStimuli.push(trial_obj3);
       testStimuli.push(trial_obj4);
       // randomizing the test stimuli
-      //jsPsych.randomization.shuffle(testStimuli);
+      jsPsych.randomization.shuffle(testStimuli);
     }
 
 
@@ -266,7 +266,7 @@
     var cueTrial = {
         type: "html-keyboard-response",
         stimulus: jsPsych.timelineVariable('cue'),
-        trial_duration: 500,
+        trial_duration: 1500,
         data: {
         stimulus_type: "cue"
       }
@@ -277,11 +277,12 @@
       type: "image-keyboard-response",
       stimulus: jsPsych.timelineVariable('stimulus'),
       choices: jsPsych.NO_KEYS,
-      trial_duration: 2500,
+      trial_duration: 5000,
       data: {
         stimulus_type: "image",
         cue_type: jsPsych.timelineVariable('cueType'),
-        image_type: jsPsych.timelineVariable('imageType')
+        image_type: jsPsych.timelineVariable('imageType'),
+        sub_group: subGroup
       }
     }
     
@@ -290,7 +291,7 @@
     var responseTrial = {
         type: 'survey-likert-timeLocked',
         questions: [{prompt: "How negative do you feel?", labels: scale_1}],
-        trial_duration: 1000,
+        trial_duration: 2500,
         data: {
         stimulus_type: "response"
       }

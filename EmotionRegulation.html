@@ -71,14 +71,15 @@
     timeline.push(welcome);
 
 
-    var randomGroup =1;
 
     var survey_trial = {
       type: 'survey-text',
       questions: [{prompt: "Participant ID"}],
       on_finish: function(data){
-      randomGroup = JSON.parse(data.responses).Q0; // update the global variable
-      console.log('The trial just finished loading.', randomGroup);
+      var responses = JSON.parse(data.responses);
+      var code = responses.Q0;
+      jsPsych.data.addProperties({sub_code: code}) // update the global variable
+      console.log('The trial just finished loading.', code);
       }
       // data: {written: randomGroup}
     }
@@ -93,7 +94,7 @@
     alert("subject condition is undefined, assigning arbitrarily");
     var subGroup = 1;
     }
-
+    jsPsych.data.addProperties({sub_group: subGroup})
 
     // Note to reader: 
     // 1- below I defined the image paths by hard coding, it would be better if we can find a 
@@ -208,34 +209,34 @@
 
       if (subGroup == 1){ //first condition: cuetype: increase
 
-        var trial_obj1 = {stimulus: imageList1[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase", subGroup: "1"};
+        var trial_obj1 = {stimulus: imageList1[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease", subGroup: "1"};
+        var trial_obj2 = {stimulus: imageList2[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
         //tag data vaiable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative", subGroup: "1"};
+        var trial_obj3 = {stimulus: imageList3[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "look-neutral", subGroup: "1"};
+        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "look-neutral"};
       } 
 
       else if (subGroup == 2){ //second condition: cueType: look
-        var trial_obj1 = {stimulus: imageList1[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative", subGroup: "2"};
+        var trial_obj1 = {stimulus: imageList1[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase",subGroup: "2"};
+        var trial_obj2 = {stimulus: imageList2[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
         //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease", subGroup: "2"};
+        var trial_obj3 = {stimulus: imageList3[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "look-neutral", subGroup: "2"};
+        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "look-neutral"};
         //tag data variable here
       } 
 
       else if (subGroup == 3){ //third condition: cueType: decrease
-        var trial_obj1 = {stimulus: imageList1[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease", subGroup: "3"};
+        var trial_obj1 = {stimulus: imageList1[i], cue: downArrow, imageType:"aversiveImage" ,cueType: "decrease"};
         //tag data variable here
-        var trial_obj2 = {stimulus: imageList2[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative", subGroup: "3"};
+        var trial_obj2 = {stimulus: imageList2[i], cue: look, imageType:"aversiveImage" ,cueType: "look-negative"};
         //tag data variable here
-        var trial_obj3 = {stimulus: imageList3[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase", subGroup: "3"};
+        var trial_obj3 = {stimulus: imageList3[i], cue: upArrow, imageType:"aversiveImage" ,cueType: "increase"};
         //tag data variable here
-        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "lookNeutral", subGroup: "3"};
+        var trial_obj4 = {stimulus: imageList4[i], cue: look, imageType:"neutralImage" ,cueType: "lookNeutral"};
         //tag data variable here
       } 
 
@@ -281,8 +282,7 @@
       data: {
         stimulus_type: "image",
         cue_type: jsPsych.timelineVariable('cueType'),
-        image_type: jsPsych.timelineVariable('imageType'),
-        sub_group: subGroup
+        image_type: jsPsych.timelineVariable('imageType')
       }
     }
     

@@ -72,29 +72,42 @@
 
 
 
-    var survey_trial = {
-      type: 'survey-text',
-      questions: [{prompt: "Participant ID"}],
-      on_finish: function(data){
-      var responses = JSON.parse(data.responses);
-      var code = responses.Q0;
-      jsPsych.data.addProperties({sub_code: code}) // update the global variable
-      console.log('The trial just finished loading.', code);
-      }
-      // data: {written: randomGroup}
-    }
-
-    
-    timeline.push(survey_trial);
+    // var survey_trial = {
+    //   type: 'survey-text',
+    //   questions: [{prompt: "Participant ID"}],
+    //   on_finish: function(data){
+    //   var responses = JSON.parse(data.responses);
+    //   var code = responses.Q0;
+    //   jsPsych.data.addProperties({sub_code: code}) // update the global variable
+    //   console.log('The trial just finished loading.', code);
+    //   }
+    //   // data: {written: randomGroup}
+    // }
+    // timeline.push(survey_trial);
 
     // getting the subject condition variable from the url sent out the subjects
-    var subGroup = jsPsych.data.getURLVariable('subGroup')
-
-    if (typeof subGroup === "undefined") {
-    alert("subject condition is undefined, assigning arbitrarily");
-    var subGroup = 1;
+    var participantID = jsPsych.data.getURLVariable('ParticipantID')
+    console.log('Participant ID is:', participantID);
+    if (typeof participantID === "undefined") {
+    alert("participant ID is undefined, assigning arbitrarily. ");
+    var participantID = 1;
     }
-    jsPsych.data.addProperties({sub_group: subGroup})
+    jsPsych.data.addProperties({participant_ID: participantID})
+
+
+
+    if(participantID % 3 == 0){
+    subGroup =1;
+    }
+    else if(participantID % 2 == 1){
+    subGroup =2;
+    }
+    else if(participantID % 3 == 2){
+    subGroup =3;
+    }
+
+    jsPsych.data.addProperties({sub_group: subGroup}) // update the global variable
+    console.log('Group is defined as: ', subGroup);
 
     // Note to reader: 
     // 1- below I defined the image paths by hard coding, it would be better if we can find a 
@@ -205,7 +218,7 @@
     //distribution of cues based on the subject condition. This way each participant will see the same image
     // associated with different cues. 
     // for (var i=0; i<imageList4.length; i++) {
-    for (var i=0; i<imageList4.length; i++) {
+    for (var i=0; i<1; i++) {
 
       if (subGroup == 1){ //first condition: cuetype: increase
 

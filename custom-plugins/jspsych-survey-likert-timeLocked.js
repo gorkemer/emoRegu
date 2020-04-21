@@ -106,7 +106,7 @@ jsPsych.plugins['survey-likert-timeLocked'] = (function() {
     display_element.innerHTML = html;
 
     if (trial.trial_duration !== null) {
-      console.log('check'),
+      //console.log('check'),
       jsPsych.pluginAPI.setTimeout(function() {
       document.getElementById('jspsych-survey-likert-next').click(); 
       }, trial.trial_duration);
@@ -145,7 +145,7 @@ jsPsych.plugins['survey-likert-timeLocked'] = (function() {
         obje[id] = response;
         Object.assign(question_data, obje);
 
-        console.log('check2');
+        //console.log('check2');
       }
 
       // save data

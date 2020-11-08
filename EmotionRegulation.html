@@ -33,7 +33,10 @@
         console.log(response.success);
       }
     };
-    xhr.send(jsPsych.data.get().json());
+    //var trials_data = jsPsych.data.get().filter([{stimulus_type: "image"}, {stimulus_type: "response"}]);
+    //console.log(trials_data.csv());
+    xhr.send(jsPsych.data.get().filter([{stimulus_type: "image"}, {stimulus_type: "response"}]);
+    //xhr.send(jsPsych.data.get().json());
   }
 
 
@@ -70,20 +73,6 @@
     };
     timeline.push(welcome);
 
-
-
-    // var survey_trial = {
-    //   type: 'survey-text',
-    //   questions: [{prompt: "Participant ID"}],
-    //   on_finish: function(data){
-    //   var responses = JSON.parse(data.responses);
-    //   var code = responses.Q0;
-    //   jsPsych.data.addProperties({sub_code: code}) // update the global variable
-    //   console.log('The trial just finished loading.', code);
-    //   }
-    //   // data: {written: randomGroup}
-    // }
-    // timeline.push(survey_trial);
 
     // getting the subject condition variable from the url sent out the subjects
     var participantID = jsPsych.data.getURLVariable('ParticipantID')

@@ -35,7 +35,7 @@
     };
     //var trials_data = jsPsych.data.get().filter([{stimulus_type: "image"}, {stimulus_type: "response"}]);
     //console.log(trials_data.csv());
-    xhr.send(jsPsych.data.get().filter([{stimulus_type: "image"}, {stimulus_type: "response"}]);
+    xhr.send(jsPsych.data.get().filter([{stimulus_type: "image"}, {stimulus_type: "response"}]).json());
     //xhr.send(jsPsych.data.get().json());
   }
 
@@ -95,7 +95,7 @@
     subGroup =3;
     }
 
-    jsPsych.data.addProperties({sub_group: subGroup}) // update the global variable
+    jsPsych.data.addProperties({participant_group: subGroup}) // update the global variable
     console.log('Group is defined as: ', subGroup);
 
     // Note to reader: 
@@ -259,7 +259,7 @@
       type: 'html-keyboard-response',
       stimulus: '<div style="font-size:60px;">+</div>',
       choices: jsPsych.NO_KEYS,
-      trial_duration: 1000,
+      trial_duration: 200, //1000
       data: {
         stimulus_type: "fixation"
       }
@@ -268,7 +268,7 @@
     var cueTrial = {
         type: "html-keyboard-response",
         stimulus: jsPsych.timelineVariable('cue'),
-        trial_duration: 1500,
+        trial_duration: 200, //1500
         data: {
         stimulus_type: "cue"
       }
@@ -279,7 +279,7 @@
       type: "image-keyboard-response",
       stimulus: jsPsych.timelineVariable('stimulus'),
       choices: jsPsych.NO_KEYS,
-      trial_duration: 5000,
+      trial_duration: 200, //5000
       data: {
         stimulus_type: "image",
         cue_type: jsPsych.timelineVariable('cueType'),
@@ -292,7 +292,7 @@
     var responseTrial = {
         type: 'survey-likert-timeLocked',
         questions: [{prompt: "How negative do you feel?", labels: scale_1}],
-        trial_duration: 2500,
+        trial_duration: 200, //2500
         data: {
         stimulus_type: "response"
       }

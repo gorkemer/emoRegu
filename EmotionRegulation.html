@@ -49,6 +49,7 @@
 
     /* create timeline */
     var timeline = [];
+    var trial_number = 1
     
     timeline.push({
       type: 'fullscreen',
@@ -283,7 +284,8 @@
       data: {
         stimulus_type: "image",
         cue_type: jsPsych.timelineVariable('cueType'),
-        image_type: jsPsych.timelineVariable('imageType')
+        image_type: jsPsych.timelineVariable('imageType'),
+        trial_num: trial_number++
       }
     }
     

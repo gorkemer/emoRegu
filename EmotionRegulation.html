@@ -284,7 +284,10 @@
       data: {
         stimulus_type: "image",
         cue_type: jsPsych.timelineVariable('cueType'),
-        image_type: jsPsych.timelineVariable('imageType')
+        image_type: jsPsych.timelineVariable('imageType'),
+      },
+      on_finish: function (data) {
+      data.trial_num = trial_number++;
       }
     }
     
@@ -303,9 +306,6 @@
         timeline: [cueTrial, testTrial, responseTrial, fixation],
         timeline_variables: testStimuli,
         randomize_order: true
-        data: {
-          trial_num: trial_number++
-      }
     }
     // jsPsych.data.addProperties({
     // subject: subjectID
